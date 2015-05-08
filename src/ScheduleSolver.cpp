@@ -2,7 +2,7 @@
 #include "Parser.cpp"
 #include "Data.cpp"
 #include <iostream>
-#include <String>
+#include <string>
 
 class ScheduleSolver
 {
