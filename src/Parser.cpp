@@ -12,7 +12,9 @@ public:
 		return Data(1,1,c,1,1,1,c,c);
 	}
 
-	~Parser();
+	~Parser() {
+		
+	}
 
 private:
 	std::string fileName;

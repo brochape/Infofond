@@ -102,24 +102,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named projet
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test
-.PHONY : test
+projet: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 projet
+.PHONY : projet
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+projet/fast:
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/build
+.PHONY : projet/fast
 
 Data.o: Data.cpp.o
 .PHONY : Data.o
 
 # target to build an object file
 Data.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Data.cpp.o
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Data.cpp.o
 .PHONY : Data.cpp.o
 
 Data.i: Data.cpp.i
@@ -127,7 +127,7 @@ Data.i: Data.cpp.i
 
 # target to preprocess a source file
 Data.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Data.cpp.i
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Data.cpp.i
 .PHONY : Data.cpp.i
 
 Data.s: Data.cpp.s
@@ -135,7 +135,7 @@ Data.s: Data.cpp.s
 
 # target to generate assembly for a file
 Data.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Data.cpp.s
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Data.cpp.s
 .PHONY : Data.cpp.s
 
 Main.o: Main.cpp.o
@@ -143,7 +143,7 @@ Main.o: Main.cpp.o
 
 # target to build an object file
 Main.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Main.cpp.o
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Main.cpp.o
 .PHONY : Main.cpp.o
 
 Main.i: Main.cpp.i
@@ -151,7 +151,7 @@ Main.i: Main.cpp.i
 
 # target to preprocess a source file
 Main.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Main.cpp.i
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Main.cpp.i
 .PHONY : Main.cpp.i
 
 Main.s: Main.cpp.s
@@ -159,7 +159,7 @@ Main.s: Main.cpp.s
 
 # target to generate assembly for a file
 Main.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Main.cpp.s
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Main.cpp.s
 .PHONY : Main.cpp.s
 
 Parser.o: Parser.cpp.o
@@ -167,7 +167,7 @@ Parser.o: Parser.cpp.o
 
 # target to build an object file
 Parser.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Parser.cpp.o
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Parser.cpp.o
 .PHONY : Parser.cpp.o
 
 Parser.i: Parser.cpp.i
@@ -175,7 +175,7 @@ Parser.i: Parser.cpp.i
 
 # target to preprocess a source file
 Parser.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Parser.cpp.i
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Parser.cpp.i
 .PHONY : Parser.cpp.i
 
 Parser.s: Parser.cpp.s
@@ -183,7 +183,7 @@ Parser.s: Parser.cpp.s
 
 # target to generate assembly for a file
 Parser.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Parser.cpp.s
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
 
 ScheduleSolver.o: ScheduleSolver.cpp.o
@@ -191,7 +191,7 @@ ScheduleSolver.o: ScheduleSolver.cpp.o
 
 # target to build an object file
 ScheduleSolver.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/ScheduleSolver.cpp.o
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/ScheduleSolver.cpp.o
 .PHONY : ScheduleSolver.cpp.o
 
 ScheduleSolver.i: ScheduleSolver.cpp.i
@@ -199,7 +199,7 @@ ScheduleSolver.i: ScheduleSolver.cpp.i
 
 # target to preprocess a source file
 ScheduleSolver.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/ScheduleSolver.cpp.i
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/ScheduleSolver.cpp.i
 .PHONY : ScheduleSolver.cpp.i
 
 ScheduleSolver.s: ScheduleSolver.cpp.s
@@ -207,7 +207,7 @@ ScheduleSolver.s: ScheduleSolver.cpp.s
 
 # target to generate assembly for a file
 ScheduleSolver.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/ScheduleSolver.cpp.s
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/ScheduleSolver.cpp.s
 .PHONY : ScheduleSolver.cpp.s
 
 Solver.o: Solver.cpp.o
@@ -215,7 +215,7 @@ Solver.o: Solver.cpp.o
 
 # target to build an object file
 Solver.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Solver.cpp.o
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Solver.cpp.o
 .PHONY : Solver.cpp.o
 
 Solver.i: Solver.cpp.i
@@ -223,7 +223,7 @@ Solver.i: Solver.cpp.i
 
 # target to preprocess a source file
 Solver.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Solver.cpp.i
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Solver.cpp.i
 .PHONY : Solver.cpp.i
 
 Solver.s: Solver.cpp.s
@@ -231,7 +231,7 @@ Solver.s: Solver.cpp.s
 
 # target to generate assembly for a file
 Solver.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/Solver.cpp.s
+	$(MAKE) -f CMakeFiles/projet.dir/build.make CMakeFiles/projet.dir/Solver.cpp.s
 .PHONY : Solver.cpp.s
 
 # Help Target
@@ -242,7 +242,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... test"
+	@echo "... projet"
 	@echo "... Data.o"
 	@echo "... Data.i"
 	@echo "... Data.s"

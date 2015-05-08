@@ -4,7 +4,7 @@ project(InfoFond)
 
 #Déclaration de l'exécutable
 
-add_executable(test
+add_executable(projet
         Data.cpp
         Global.hpp
         Heap.hpp

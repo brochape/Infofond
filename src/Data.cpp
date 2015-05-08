@@ -23,7 +23,9 @@ public:
 	int* getA() { return this->a; }
 	int* getB() { return this->b; }
 
-	~Data();
+	~Data() {
+		
+	}
 private:
 	int T;
 	int S;
