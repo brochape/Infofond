@@ -1,19 +1,19 @@
-#include <Strings>
+#include <String>
 #include "Data.cpp"
 
-class Parser
-{
+class Parser {
 public:
-	Parser(String fileName) {
-		this.fileName = fileName;
+	Parser(std::string fileName) {
+		this->fileName = fileName;
 	}
 
 	Data parse(){
-		return Data(1,1,[1],1,1,1,[1],[1])
+		int c[] = {1};
+		return Data(1,1,c,1,1,1,c,c);
 	}
 
 	~Parser();
 
 private:
-	String fileName;
+	std::string fileName;
 };
