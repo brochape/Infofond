@@ -1,14 +1,10 @@
 #include <iostream>
 
-#include "Sudoku.hpp"
+#include "ScheduleSolver.cpp"
 
 using namespace std;
 
 int main() {
-   Sudoku<5> s;
-   cin >> s;
-   cout << s ;
-   cout << endl ;
-   s.solve();
-   cout << s;
+	ScheduleSolver s = ScheduleSolver();
+	s.solve();
 }
