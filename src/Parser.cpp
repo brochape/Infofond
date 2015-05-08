@@ -8,8 +8,8 @@ public:
 		this.fileName = fileName;
 	}
 
-	void parse(){
-
+	Data parse(){
+		return Data(1,1,[1],1,1,1,[1],[1])
 	}
 
 	~Parser();
