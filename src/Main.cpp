@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "ScheduleSolver.cpp"
+#include "ScheduleSolver.hpp"
 
 using namespace std;
 

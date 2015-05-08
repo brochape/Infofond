@@ -1,26 +1,20 @@
+#include "ScheduleSolver.hpp"
 #include "Solver.hpp"
-#include "Parser.cpp"
-#include "Data.cpp"
+#include "Parser.hpp"
+#include "Data.hpp"
 #include <iostream>
 #include <string>
 
-class ScheduleSolver
-{
-public:
-	ScheduleSolver(){
+ScheduleSolver::ScheduleSolver(){ 
+}
 
-	}
+void ScheduleSolver::solve() {
+	std::string s = std::string("plop");
+	Parser p = Parser(s); 
+	Data d = p.parse();
+	std::cout << d.getT() << std::endl;
+}
 
-	void solve() {
-		std::string s = std::string("plop");
-		Parser p = Parser(s); 
-		Data d = p.parse();
-		std::cout << d.getT() << std::endl;
-	}
+ScheduleSolver::~ScheduleSolver(){
 
-	~ScheduleSolver(){
-
-	}
-
-	/* data */
-};
+}

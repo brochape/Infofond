@@ -1,21 +1,15 @@
+
+#include "Parser.hpp"
+#include "Data.hpp"
 #include <string>
-#include "Data.cpp"
 
-class Parser {
-public:
-	Parser(std::string fileName) {
-		this->fileName = fileName;
-	}
+Parser::Parser(std::string fileName) :
+	fileName(fileName)
+{}
 
-	Data parse(){
-		int c[] = {1};
-		return Data(1,1,c,1,1,1,c,c);
-	}
+Data Parser::parse(){
+	int c[] = {1};
+	return Data(1,1,c,1,1,1,c,c);
+}
 
-	~Parser() {
-		
-	}
-
-private:
-	std::string fileName;
-};
+Parser::~Parser() {}
