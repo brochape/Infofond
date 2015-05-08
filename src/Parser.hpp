@@ -4,6 +4,7 @@
 #include "Data.hpp"
 
 #include <string>
+#include <fstream>
 
 class Parser {
 public:
@@ -14,7 +15,7 @@ public:
 	~Parser();
 
 private:
-	std::string fileName;
+	ifstream file;
 };
 
 #endif // DATA_HPP

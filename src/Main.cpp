@@ -1,10 +1,12 @@
 #include <iostream>
+#include <string>
 
 #include "ScheduleSolver.hpp"
 
 using namespace std;
 
 int main() {
-	ScheduleSolver s = ScheduleSolver();
+	s = std::string("data/example-inputs.txt");
+	ScheduleSolver s = ScheduleSolver(s);
 	s.solve();
 }

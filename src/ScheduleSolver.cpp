@@ -8,9 +8,8 @@
 ScheduleSolver::ScheduleSolver(){ 
 }
 
-void ScheduleSolver::solve() {
-	std::string s = std::string("plop");
-	Parser p = Parser(s); 
+void ScheduleSolver::solve(std::string fileName) {
+	Parser p = Parser(fileName); 
 	Data d = p.parse();
 	std::cout << d.getT() << std::endl;
 }

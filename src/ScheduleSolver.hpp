@@ -3,7 +3,7 @@
 
 class ScheduleSolver {
 public:
-	ScheduleSolver();
+	ScheduleSolver(std::string fileName);
 
 	void solve();
 
