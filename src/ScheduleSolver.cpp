@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
 
 ScheduleSolver::ScheduleSolver(std::string fileName) : parser(fileName) { 
 
@@ -12,7 +13,8 @@ ScheduleSolver::ScheduleSolver(std::string fileName) : parser(fileName) {
 
 void ScheduleSolver::solve() {
 	Data d = this->parser.parse();
-	std::cout << "Examens: " << d.getX() << "\nPériodes: " << d.getT() << "\nSalles: " << d.getS() << std::endl;
+
+	d.print();
 
 	Solver sol;
 	int prop[d.getX()][d.getT()][d.getS()];
@@ -61,8 +63,21 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
+	// Contrainte de la limitation de place dans les salles
+	// -> Un examen ou il y a x personnes ne peut pas avoir lieu dans une salle des n places si n<x
+	for (int x = 0; x < d.getX(); ++x) {
+		for (int t = 0; t < d.getT(); ++t) {
+			for (int s = 0; s < d.getS(); ++s) {
+				if (d.getV()[x]>d.getC()[s]) {
+					sol.addUnit(~Lit(prop[x][t][s]));
+				}
+			}
+		}
+	}
+
 	sol.solve();
 
+	// print de l'output
 	if (sol.okay()) {
 		for (int x = 0; x < d.getX(); ++x) {
 			for (int t = 0; t < d.getT(); ++t) {

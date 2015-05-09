@@ -16,6 +16,9 @@ public:
 	int getX() { return this->X; }
 	std::vector<std::vector<int>> getA() { return this->a; }
 	std::vector<std::vector<int>> getB() { return this->b; }
+	std::vector<int> getV() {return this->v; }
+
+	void print();
 
 	~Data();
 
@@ -28,6 +31,10 @@ private:
 	int X;
 	std::vector<std::vector<int>> a;
 	std::vector<std::vector<int>> b;
+	std::vector<int> v;
+
+	std::vector<int> countStudents(int X, std::vector<std::vector<int>> a);
+
 };
 
 #endif //DATA_HPP
