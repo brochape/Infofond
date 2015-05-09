@@ -7,9 +7,10 @@
 #include <sstream>
 #include <vector>
 
-Parser::Parser(std::string fileName) :
-	file(std::ifstream(fileName))
-{}
+Parser::Parser(std::string fileName)
+{
+	file.open(fileName);
+}
 
 Data Parser::parse(){
 	std::string line;
