@@ -14,7 +14,7 @@ public:
 	~ScheduleSolver();
 
 private:
-	Parser p;
+	Parser parser;
 
 };
 

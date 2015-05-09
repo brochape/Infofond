@@ -6,13 +6,13 @@
 #include <string>
 #include <cmath>
 
-ScheduleSolver::ScheduleSolver(std::string fileName) : p(fileName) { 
+ScheduleSolver::ScheduleSolver(std::string fileName) : parser(fileName) { 
 
 }
 
 void ScheduleSolver::solve() {
-	Data d = this->p.parse();
-	std::cout << d.getT() << " " << d.getS() << " " << d.getX() << std::endl;
+	Data d = this->parser.parse();
+	std::cout << "Examens: " << d.getX() << "\nPériodes: " << d.getT() << "\nSalles: " << d.getS() << std::endl;
 
 	Solver sol;
 	int prop[d.getX()][d.getT()][d.getS()];
@@ -62,6 +62,18 @@ void ScheduleSolver::solve() {
 	}
 
 	sol.solve();
+
+	if (sol.okay()) {
+		for (int x = 0; x < d.getX(); ++x) {
+			for (int t = 0; t < d.getT(); ++t) {
+				for (int s = 0; s < d.getS(); ++s) {
+					if (sol.model[prop[x][t][s]]==l_True) {
+						std::cout << "L'examen " << x << " se tiendra pendant la période " << t << " dans la salle " << s << std::endl;
+					}
+				}
+			}
+		}
+	}
 
 }
 
