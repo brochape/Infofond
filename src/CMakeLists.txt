@@ -4,27 +4,27 @@ project(InfoFond)
 
 #Déclaration de l'exécutable
 
-add_executable(projet
-        Data.hpp
-        Data.cpp
+add_executable(projet-v0
+        scheduler-v0/Data.hpp
+        scheduler-v0/Data.cpp
 
-        Global.hpp
-        Heap.hpp
+        minisat/Global.hpp
+        minisat/Heap.hpp
 
-        Main.cpp
+        scheduler-v0/Main.cpp
 
-        Parser.hpp
-        Parser.cpp
+        scheduler-v0/Parser.hpp
+        scheduler-v0/Parser.cpp
 
-        ScheduleSolver.hpp
-        ScheduleSolver.cpp
+        scheduler-v0/ScheduleSolver.hpp
+        scheduler-v0/ScheduleSolver.cpp
 
-        Solver.cpp
-        Solver.hpp
+        minisat/Solver.cpp
+        minisat/Solver.hpp
 
-        SolverTypes.hpp
-        Sort.hpp
-        VarOrder.hpp
+        minisat/SolverTypes.hpp
+        minisat/Sort.hpp
+        minisat/VarOrder.hpp
 )
 
 set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")

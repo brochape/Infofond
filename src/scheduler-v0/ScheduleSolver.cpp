@@ -1,5 +1,5 @@
 #include "ScheduleSolver.hpp"
-#include "Solver.hpp"
+#include "../minisat/Solver.hpp"
 #include "Parser.hpp"
 #include "Data.hpp"
 #include <iostream>
