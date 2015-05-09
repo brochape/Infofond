@@ -25,6 +25,21 @@ void Data::print() {
 		std::cout << this->getV()[x] << ", ";
 	}
 	std::cout << std::endl;
+	std::cout << "Elèves: " << this->getE() << "\nProfesseurs: " << this->getP() << std::endl;
+	for (int e = 0; e < this->getE(); ++e) {
+		std::cout << "E" << e << ": ";
+		for (int x = 0; x < this->getA()[e].size(); ++x) {
+			std::cout << this->getA()[e][x]-1 << ", ";
+		}
+		std::cout << std::endl;
+	}
+	for (int p = 0; p < this->getP(); ++p) {
+		std::cout << "P" << p << ": ";
+		for (int x = 0; x < this->getB()[p].size(); ++x) {
+			std::cout << this->getB()[p][x]-1 << ", ";
+		}
+		std::cout << std::endl;
+	}
 	 
 }
 

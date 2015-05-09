@@ -75,6 +75,42 @@ void ScheduleSolver::solve() {
 		}
 	}
 
+	// Contrainte de la résolution des conflit horraire pour un étudiant
+	// -> Un étudiant ne peut pas avoir 2 examens en même temps
+	for (int e = 0; e < d.getE(); ++e) {
+		for (int x = 0; x < d.getA()[e].size(); ++x) {
+			for (int y = 0; y < d.getA()[e].size(); ++y) {
+				if (x!=y) {
+					for (int t = 0; t < d.getT(); ++t) {
+						for (int s = 0; s < d.getS(); ++s) {
+							for (int s2 = 0; s2 < d.getS(); ++s2) {
+								sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][t][s2]));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Contrainte de la résolution des conflit horraire pour un professeur
+	// -> Un professeur ne peut pas surveiller 2 examens en même temps
+	for (int p = 0; p < d.getP(); ++p) {
+		for (int x = 0; x < d.getB()[p].size(); ++x) {
+			for (int y = 0; y < d.getB()[p].size(); ++y) {
+				if (x!=y) {
+					for (int t = 0; t < d.getT(); ++t) {
+						for (int s = 0; s < d.getS(); ++s) {
+							for (int s2 = 0; s2 < d.getS(); ++s2) {
+								sol.addBinary(~Lit(prop[d.getB()[p][x]-1][t][s]),~Lit(prop[d.getB()[p][y]-1][t][s2]));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	sol.solve();
 
 	// print de l'output
