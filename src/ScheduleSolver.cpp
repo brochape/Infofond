@@ -9,7 +9,7 @@ ScheduleSolver::ScheduleSolver(){
 }
 
 void ScheduleSolver::solve(std::string fileName) {
-	Parser p = Parser(fileName); 
+	Parser p(fileName); 
 	Data d = p.parse();
 	std::cout << d.getT() << std::endl;
 }

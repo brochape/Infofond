@@ -1,11 +1,13 @@
 #ifndef SCHEDULE_SOLVER_HPP
 #define SCHEDULE_SOLVER_HPP
 
+#include <string>
+
 class ScheduleSolver {
 public:
-	ScheduleSolver(std::string fileName);
+	ScheduleSolver();
 
-	void solve();
+	void solve(std::string fileName);
 
 	~ScheduleSolver();
 

@@ -15,7 +15,7 @@ public:
 	~Parser();
 
 private:
-	ifstream file;
+	std::ifstream file;
 };
 
 #endif // DATA_HPP
