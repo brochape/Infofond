@@ -125,6 +125,9 @@ void ScheduleSolver::solve() {
 			}
 		}
 	}
+	else{
+		std::cout << "Ce problème n'a pas de solution."<<std::endl;
+	}
 
 }
 
