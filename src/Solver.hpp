@@ -180,7 +180,7 @@ public:
 
     // Solving:
     //
-    bool    okay() { return ok; }       // FALSE means solver is in an conflicting state (must never be used again!)
+    bool    okay() const { return ok; }       // FALSE means solver is in an conflicting state (must never be used again!)
     void    simplifyDB();
     bool    solve(const vec<Lit>& assumps);
     bool    solve() { vec<Lit> tmp; return solve(tmp); }
