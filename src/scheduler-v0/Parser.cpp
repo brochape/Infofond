@@ -62,6 +62,7 @@ Data Parser::parse(){
 				}
 				b.push_back(p);
 			}
+			this->file.close();
 			return Data(T,S,c,E,P,X,a,b);
 		} else {
 			std::cout << "La lecture du fichier est terminée." << std::endl;			
@@ -71,5 +72,4 @@ Data Parser::parse(){
 }
 
 Parser::~Parser() {
-	this->file.close();
 }
