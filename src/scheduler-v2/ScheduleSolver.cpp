@@ -63,6 +63,7 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
+	// oblige les n heures qui suivent le début d'un examen de n heures d'être libre
 	for (int x1 = 0; x1 < d.getX(); ++x1) {
 		for (int t = 0; t < d.getT(); ++t) {
 			for (int s = 0; s < d.getS(); ++s) {
@@ -78,6 +79,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
+	// ne peut pas commencer si l'examen sort de l'horraire
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int s = 0; s < d.getS(); ++s) {
 			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
@@ -108,8 +110,8 @@ void ScheduleSolver::solve() {
 						for (int s = 0; s < d.getS(); ++s) {
 							for (int s2 = 0; s2 < d.getS(); ++s2) {
 								for (int dt = t-d.getD()[d.getA()[e][y]-1]+1; dt <= t+d.getD()[d.getA()[e][x]-1]-1; ++dt) {
-									if ((t+dt>=0) && (t+dt<d.getT())) {
-										sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][t+dt][s2]));
+									if ((dt>=0) && (dt<d.getT())) {
+										sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][dt][s2]));
 									}
 								}
 							}
@@ -130,13 +132,35 @@ void ScheduleSolver::solve() {
 						for (int s = 0; s < d.getS(); ++s) {
 							for (int s2 = 0; s2 < d.getS(); ++s2) {
 								for (int dt = t-d.getD()[d.getB()[p][y]-1]+1; dt <= t+d.getD()[d.getB()[p][x]-1]-1; ++dt) {
-									if ((t+dt>=0) && (t+dt<d.getT())) {
-										// std::cout << "not " << d.getB()[p][x]-1 << " " << t << " " << s << " or not " << d.getB()[p][y]-1 << " " << t+dt << " " << s2 << std::endl;
-										sol.addBinary(~Lit(prop[d.getB()[p][x]-1][t][s]),~Lit(prop[d.getB()[p][y]-1][t+dt][s2]));
+									if ((dt>=0) && (dt<d.getT())) {
+										sol.addBinary(~Lit(prop[d.getB()[p][x]-1][t][s]),~Lit(prop[d.getB()[p][y]-1][dt][s2]));
 									}
 								}
 							}
 						}
+					}
+				}
+			}
+		}
+	}
+
+	for (int i = 0; i < d.getI().size(); ++i) {
+		int d1(d.getI()[i][0]);
+		int d2(d.getI()[i][1]);
+		for (int x = 0; x < d.getX(); ++x) {
+			for (int s = 0; s < d.getS(); ++s) {
+				for (int t = d1; t < d2+1; ++t) {
+					std::cout << x << " " << t << " " << s << std::endl;
+					sol.addUnit(~Lit(prop[x][t][s]));
+				}
+			}
+		}
+		for (int x = 0; x < d.getX(); ++x) {
+			for (int s = 0; s < d.getS(); ++s) {
+				for (int t = d1-d.getD()[x]+1; t < d1; ++t) {
+					if (t>=0) {
+						std::cout << x << " " << t << " " << s << std::endl;
+						sol.addUnit(~Lit(prop[x][t][s]));
 					}
 				}
 			}

@@ -9,4 +9,5 @@ int main() {
 	std::string str = std::string("data/example-inputs3.txt");
 	ScheduleSolver s(str);
 	s.solve();
+	s.solve();
 }

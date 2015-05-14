@@ -111,8 +111,8 @@ void ScheduleSolver::solve() {
 						for (int s = 0; s < d.getS(); ++s) {
 							for (int s2 = 0; s2 < d.getS(); ++s2) {
 								for (int dt = t-d.getD()[d.getA()[e][y]-1]+1; dt <= t+d.getD()[d.getA()[e][x]-1]-1; ++dt) {
-									if ((t+dt>=0) && (t+dt<d.getT())) {
-										sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][t+dt][s2]));
+									if ((dt>=0) && (dt<d.getT())) {
+										sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][dt][s2]));
 									}
 								}
 							}
@@ -133,9 +133,9 @@ void ScheduleSolver::solve() {
 						for (int s = 0; s < d.getS(); ++s) {
 							for (int s2 = 0; s2 < d.getS(); ++s2) {
 								for (int dt = t-d.getD()[d.getB()[p][y]-1]+1; dt <= t+d.getD()[d.getB()[p][x]-1]-1; ++dt) {
-									if ((t+dt>=0) && (t+dt<d.getT())) {
+									if ((dt>=0) && (dt<d.getT())) {
 										// std::cout << "not " << d.getB()[p][x]-1 << " " << t << " " << s << " or not " << d.getB()[p][y]-1 << " " << t+dt << " " << s2 << std::endl;
-										sol.addBinary(~Lit(prop[d.getB()[p][x]-1][t][s]),~Lit(prop[d.getB()[p][y]-1][t+dt][s2]));
+										sol.addBinary(~Lit(prop[d.getB()[p][x]-1][t][s]),~Lit(prop[d.getB()[p][y]-1][dt][s2]));
 									}
 								}
 							}
