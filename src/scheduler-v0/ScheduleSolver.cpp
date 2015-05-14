@@ -128,6 +128,21 @@ void ScheduleSolver::solve() {
 				}
 			}
 		}
+		std::cout << "S\\T\t";
+		for (int t = 0; t < d.getT(); ++t) { std::cout << t << '\t' ; }
+		std::cout << std::endl;
+		for (int s = 0; s < d.getS(); ++s) {
+			std::cout << s << '\t' ;
+			for (int t = 0; t < d.getT(); ++t) {
+				for (int x = 0; x < d.getX(); ++x) {
+					if (sol.model[prop[x][t][s]]==l_True) {
+						std::cout << "X" << x ;
+					}
+				}
+				std::cout << '\t' ;
+			}
+			std::cout << std::endl;
+		}
 	}
 	else{
 		std::cout << "Ce problème n'a pas de solution."<<std::endl;
