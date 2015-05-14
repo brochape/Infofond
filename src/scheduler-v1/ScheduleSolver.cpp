@@ -71,7 +71,6 @@ void ScheduleSolver::solve() {
 				if (t+d.getD()[x]-1<d.getT()) {
 					for (int dt = 1; dt < d.getD()[x]; ++dt) {
 						for (int x2 = 0; x2 < d.getX(); ++x2) {
-							// std::cout << "not " << x << " " << t << " " << s << " or not " << x2 << " " << t+dt << " " << s << std::endl;
 							sol.addBinary(~Lit(prop[x][t][s]),~Lit(prop[x2][t+dt][s]));
 						}
 					}

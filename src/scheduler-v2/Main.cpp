@@ -10,4 +10,5 @@ int main() {
 	ScheduleSolver s(str);
 	s.solve();
 	s.solve();
+	return 0;
 }
