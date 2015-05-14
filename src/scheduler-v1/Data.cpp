@@ -1,7 +1,7 @@
 #include "Data.hpp"
 #include <iostream>
 
-Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<std::vector<int>> a, std::vector<std::vector<int>> b, std::vector<int> d ) :
+Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<std::vector<int> > a, std::vector<std::vector<int> > b, std::vector<int> d ) :
 		T(T),
 		S(S),
 		c(c),
@@ -49,7 +49,7 @@ void Data::print() {
 	 
 }
 
-std::vector<int> Data::countStudents(int X, std::vector<std::vector<int>> a) {
+std::vector<int> Data::countStudents(int X, std::vector<std::vector<int> > a) {
 	std::vector<int> res(X);
 	for (int e = 0; e < a.size(); ++e) {
 		for (int x = 0; x < a[e].size(); ++x) {

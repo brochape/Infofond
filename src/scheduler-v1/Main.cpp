@@ -11,4 +11,5 @@ int main() {
 	s.solve();
 	s.solve();
 	s.solve();
+	return 0;
 }
