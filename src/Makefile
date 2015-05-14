@@ -127,6 +127,19 @@ projet-v1/fast:
 	$(MAKE) -f CMakeFiles/projet-v1.dir/build.make CMakeFiles/projet-v1.dir/build
 .PHONY : projet-v1/fast
 
+#=============================================================================
+# Target rules for targets named projet-v2
+
+# Build rule for target.
+projet-v2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 projet-v2
+.PHONY : projet-v2
+
+# fast build rule for target.
+projet-v2/fast:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/build
+.PHONY : projet-v2/fast
+
 minisat/Solver.o: minisat/Solver.cpp.o
 .PHONY : minisat/Solver.o
 
@@ -134,6 +147,7 @@ minisat/Solver.o: minisat/Solver.cpp.o
 minisat/Solver.cpp.o:
 	$(MAKE) -f CMakeFiles/projet-v0.dir/build.make CMakeFiles/projet-v0.dir/minisat/Solver.cpp.o
 	$(MAKE) -f CMakeFiles/projet-v1.dir/build.make CMakeFiles/projet-v1.dir/minisat/Solver.cpp.o
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/minisat/Solver.cpp.o
 .PHONY : minisat/Solver.cpp.o
 
 minisat/Solver.i: minisat/Solver.cpp.i
@@ -143,6 +157,7 @@ minisat/Solver.i: minisat/Solver.cpp.i
 minisat/Solver.cpp.i:
 	$(MAKE) -f CMakeFiles/projet-v0.dir/build.make CMakeFiles/projet-v0.dir/minisat/Solver.cpp.i
 	$(MAKE) -f CMakeFiles/projet-v1.dir/build.make CMakeFiles/projet-v1.dir/minisat/Solver.cpp.i
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/minisat/Solver.cpp.i
 .PHONY : minisat/Solver.cpp.i
 
 minisat/Solver.s: minisat/Solver.cpp.s
@@ -152,6 +167,7 @@ minisat/Solver.s: minisat/Solver.cpp.s
 minisat/Solver.cpp.s:
 	$(MAKE) -f CMakeFiles/projet-v0.dir/build.make CMakeFiles/projet-v0.dir/minisat/Solver.cpp.s
 	$(MAKE) -f CMakeFiles/projet-v1.dir/build.make CMakeFiles/projet-v1.dir/minisat/Solver.cpp.s
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/minisat/Solver.cpp.s
 .PHONY : minisat/Solver.cpp.s
 
 scheduler-v0/Data.o: scheduler-v0/Data.cpp.o
@@ -346,6 +362,102 @@ scheduler-v1/ScheduleSolver.cpp.s:
 	$(MAKE) -f CMakeFiles/projet-v1.dir/build.make CMakeFiles/projet-v1.dir/scheduler-v1/ScheduleSolver.cpp.s
 .PHONY : scheduler-v1/ScheduleSolver.cpp.s
 
+scheduler-v2/Data.o: scheduler-v2/Data.cpp.o
+.PHONY : scheduler-v2/Data.o
+
+# target to build an object file
+scheduler-v2/Data.cpp.o:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Data.cpp.o
+.PHONY : scheduler-v2/Data.cpp.o
+
+scheduler-v2/Data.i: scheduler-v2/Data.cpp.i
+.PHONY : scheduler-v2/Data.i
+
+# target to preprocess a source file
+scheduler-v2/Data.cpp.i:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Data.cpp.i
+.PHONY : scheduler-v2/Data.cpp.i
+
+scheduler-v2/Data.s: scheduler-v2/Data.cpp.s
+.PHONY : scheduler-v2/Data.s
+
+# target to generate assembly for a file
+scheduler-v2/Data.cpp.s:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Data.cpp.s
+.PHONY : scheduler-v2/Data.cpp.s
+
+scheduler-v2/Main.o: scheduler-v2/Main.cpp.o
+.PHONY : scheduler-v2/Main.o
+
+# target to build an object file
+scheduler-v2/Main.cpp.o:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Main.cpp.o
+.PHONY : scheduler-v2/Main.cpp.o
+
+scheduler-v2/Main.i: scheduler-v2/Main.cpp.i
+.PHONY : scheduler-v2/Main.i
+
+# target to preprocess a source file
+scheduler-v2/Main.cpp.i:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Main.cpp.i
+.PHONY : scheduler-v2/Main.cpp.i
+
+scheduler-v2/Main.s: scheduler-v2/Main.cpp.s
+.PHONY : scheduler-v2/Main.s
+
+# target to generate assembly for a file
+scheduler-v2/Main.cpp.s:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Main.cpp.s
+.PHONY : scheduler-v2/Main.cpp.s
+
+scheduler-v2/Parser.o: scheduler-v2/Parser.cpp.o
+.PHONY : scheduler-v2/Parser.o
+
+# target to build an object file
+scheduler-v2/Parser.cpp.o:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Parser.cpp.o
+.PHONY : scheduler-v2/Parser.cpp.o
+
+scheduler-v2/Parser.i: scheduler-v2/Parser.cpp.i
+.PHONY : scheduler-v2/Parser.i
+
+# target to preprocess a source file
+scheduler-v2/Parser.cpp.i:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Parser.cpp.i
+.PHONY : scheduler-v2/Parser.cpp.i
+
+scheduler-v2/Parser.s: scheduler-v2/Parser.cpp.s
+.PHONY : scheduler-v2/Parser.s
+
+# target to generate assembly for a file
+scheduler-v2/Parser.cpp.s:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/Parser.cpp.s
+.PHONY : scheduler-v2/Parser.cpp.s
+
+scheduler-v2/ScheduleSolver.o: scheduler-v2/ScheduleSolver.cpp.o
+.PHONY : scheduler-v2/ScheduleSolver.o
+
+# target to build an object file
+scheduler-v2/ScheduleSolver.cpp.o:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/ScheduleSolver.cpp.o
+.PHONY : scheduler-v2/ScheduleSolver.cpp.o
+
+scheduler-v2/ScheduleSolver.i: scheduler-v2/ScheduleSolver.cpp.i
+.PHONY : scheduler-v2/ScheduleSolver.i
+
+# target to preprocess a source file
+scheduler-v2/ScheduleSolver.cpp.i:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/ScheduleSolver.cpp.i
+.PHONY : scheduler-v2/ScheduleSolver.cpp.i
+
+scheduler-v2/ScheduleSolver.s: scheduler-v2/ScheduleSolver.cpp.s
+.PHONY : scheduler-v2/ScheduleSolver.s
+
+# target to generate assembly for a file
+scheduler-v2/ScheduleSolver.cpp.s:
+	$(MAKE) -f CMakeFiles/projet-v2.dir/build.make CMakeFiles/projet-v2.dir/scheduler-v2/ScheduleSolver.cpp.s
+.PHONY : scheduler-v2/ScheduleSolver.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -356,6 +468,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... projet-v0"
 	@echo "... projet-v1"
+	@echo "... projet-v2"
 	@echo "... minisat/Solver.o"
 	@echo "... minisat/Solver.i"
 	@echo "... minisat/Solver.s"
@@ -383,6 +496,18 @@ help:
 	@echo "... scheduler-v1/ScheduleSolver.o"
 	@echo "... scheduler-v1/ScheduleSolver.i"
 	@echo "... scheduler-v1/ScheduleSolver.s"
+	@echo "... scheduler-v2/Data.o"
+	@echo "... scheduler-v2/Data.i"
+	@echo "... scheduler-v2/Data.s"
+	@echo "... scheduler-v2/Main.o"
+	@echo "... scheduler-v2/Main.i"
+	@echo "... scheduler-v2/Main.s"
+	@echo "... scheduler-v2/Parser.o"
+	@echo "... scheduler-v2/Parser.i"
+	@echo "... scheduler-v2/Parser.s"
+	@echo "... scheduler-v2/ScheduleSolver.o"
+	@echo "... scheduler-v2/ScheduleSolver.i"
+	@echo "... scheduler-v2/ScheduleSolver.s"
 .PHONY : help
 
 

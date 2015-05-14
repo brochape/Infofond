@@ -50,4 +50,27 @@ add_executable(projet-v1
         minisat/VarOrder.hpp
 )
 
+add_executable(projet-v2
+        scheduler-v2/Data.hpp
+        scheduler-v2/Data.cpp
+
+        minisat/Global.hpp
+        minisat/Heap.hpp
+
+        scheduler-v2/Main.cpp
+
+        scheduler-v2/Parser.hpp
+        scheduler-v2/Parser.cpp
+
+        scheduler-v2/ScheduleSolver.hpp
+        scheduler-v2/ScheduleSolver.cpp
+
+        minisat/Solver.cpp
+        minisat/Solver.hpp
+
+        minisat/SolverTypes.hpp
+        minisat/Sort.hpp
+        minisat/VarOrder.hpp
+)
+
 set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")

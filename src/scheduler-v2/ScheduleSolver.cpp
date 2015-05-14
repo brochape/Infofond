@@ -63,8 +63,6 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
-	// Contrainte de continuité dans le temps d'un examen
-	// -> Un examen peut se dérouler sur plusieurs périodes
 	for (int x1 = 0; x1 < d.getX(); ++x1) {
 		for (int t = 0; t < d.getT(); ++t) {
 			for (int s = 0; s < d.getS(); ++s) {
@@ -80,7 +78,6 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte de non dépassement des bornes
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int s = 0; s < d.getS(); ++s) {
 			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
