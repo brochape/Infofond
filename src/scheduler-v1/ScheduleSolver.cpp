@@ -63,11 +63,16 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
-	for (int x = 0; x < d.getX(); ++x) {
+	for (int x1 = 0; x1 < d.getX(); ++x1) {
 		for (int t = 0; t < d.getT(); ++t) {
 			for (int s = 0; s < d.getS(); ++s) {
-				for (int dt = 1; dt < d.getD()[x]; ++dt) {
-					sol.addBinary(~Lit(prop[x][t][s]),~Lit(prop[x][t+dt][s]));
+				if (t+d.getD()[x1]-1<d.getT()) {
+					for (int dt = 1; dt < d.getD()[x1]; ++dt) {
+						for (int x2 = 0; x2 < d.getX(); ++x2) {
+							std::cout << "not " << x1 << " " << t << " " << s << " or not " << x2 << " " << t+dt << " " << s << std::endl;
+							sol.addBinary(~Lit(prop[x1][t][s]),~Lit(prop[x2][t+dt][s]));
+						}
+					}
 				}
 			}
 		}
