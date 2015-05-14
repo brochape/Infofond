@@ -1,7 +1,7 @@
 #include "Data.hpp"
 #include <iostream>
 
-Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<std::vector<int>> a, std::vector<std::vector<int>> b, std::vector<int> d ) :
+Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<std::vector<int>> a, std::vector<std::vector<int>> b, std::vector<int> d, int I, std::vector<std::vector<int> > i ) :
 		T(T),
 		S(S),
 		c(c),
@@ -11,7 +11,9 @@ Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<st
 		a(a),
 		b(b),
 		d(d),
-		v(countStudents(X,a))
+		v(countStudents(X,a)),
+		I(I),
+		i(i)
 {}
 
 void Data::print() {
@@ -44,6 +46,11 @@ void Data::print() {
 	std::cout << "Durées: " ;
 	for (int x = 0; x < this->getX(); ++x) {
 		std::cout << this->getD()[x] << ", ";
+	}
+	std::cout << std::endl;
+	std::cout << "Intervalles: " ;
+	for (int i = 0; i < this->getI().size(); ++i) {
+		std::cout << "(" << this->getI()[i][0] << "," << this->getI()[i][1] << "), ";
 	}
 	std::cout << std::endl;
 	 

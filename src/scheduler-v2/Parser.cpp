@@ -71,7 +71,23 @@ Data Parser::parse(){
 				getline(iss,token,';');
 				d.push_back(atoi(token.c_str()));
 			}
-			return Data(T,S,c,E,P,X,a,b,d);
+			// I = nombre d'intervalles
+			getline(iss,token,';');
+			int I(atoi(token.c_str()));
+			// i = liste des taille des examens
+			std::vector<std::vector<int> > i;
+			for (int k = 0; k < I; ++k) {
+				getline(iss,token,';');
+				std::istringstream iss2(token);
+				std::string tk;
+				std::vector<int> p;
+				while (getline(iss2,tk,',')) {
+					p.push_back(atoi(tk.c_str()));
+				}
+				i.push_back(p);
+			}
+
+			return Data(T,S,c,E,P,X,a,b,d,I,i);
 		} else {
 			std::cout << "La lecture du fichier est terminée." << std::endl;			
 		}
