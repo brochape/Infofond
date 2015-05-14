@@ -7,7 +7,8 @@
 #include <sstream>
 #include <vector>
 
-Parser::Parser(std::string fileName) {
+Parser::Parser(std::string fileName)
+{
 	file.open(fileName);
 }
 
@@ -40,7 +41,8 @@ Data Parser::parse(){
 			int X(atoi(token.c_str()));
 			// a = liste des examens par étudiant
 			std::vector<std::vector<int>> a;
-			for (int i = 0; i < E; ++i) {
+			for (int i = 0; i < E; ++i)
+			{
 				getline(iss,token,';');
 				std::istringstream iss2(token);
 				std::string tk;
@@ -52,7 +54,8 @@ Data Parser::parse(){
 			}
 			// b = liste des examens par professeur
 			std::vector<std::vector<int>> b;
-			for (int i = 0; i < P; ++i) {
+			for (int i = 0; i < P; ++i)
+			{
 				getline(iss,token,';');
 				std::istringstream iss2(token);
 				std::string tk;
@@ -62,7 +65,13 @@ Data Parser::parse(){
 				}
 				b.push_back(p);
 			}
-			return Data(T,S,c,E,P,X,a,b);
+			// d = liste des taille des examens
+			std::vector<int> d;
+			for (int i = 0; i < X; ++i) {
+				getline(iss,token,';');
+				d.push_back(atoi(token.c_str()));
+			}
+			return Data(T,S,c,E,P,X,a,b,d);
 		} else {
 			std::cout << "La lecture du fichier est terminée." << std::endl;			
 		}
