@@ -49,7 +49,7 @@ void Data::print() {
 	}
 	std::cout << std::endl;
 	std::cout << "Intervalles: " ;
-	for (int i = 0; i < this->getI().size(); ++i) {
+	for (int i = 0; i < this->I; ++i) {
 		std::cout << "(" << this->getI()[i][0] << "," << this->getI()[i][1] << "), ";
 	}
 	std::cout << std::endl;
