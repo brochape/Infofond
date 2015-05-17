@@ -66,13 +66,11 @@ void ScheduleSolver::solve() {
 	// Contrainte de continuité dans le temps d'un examen
 	// -> Un examen peut se dérouler sur plusieurs périodes
 	for (int x = 0; x < d.getX(); ++x) {
-		for (int t = 0; t < d.getT(); ++t) {
+		for (int t = 0; t < d.getT()-d.getD()[x]+1; ++t) {
 			for (int s = 0; s < d.getS(); ++s) {
-				if (t+d.getD()[x]-1<d.getT()) {
-					for (int dt = 1; dt < d.getD()[x]; ++dt) {
-						for (int x2 = 0; x2 < d.getX(); ++x2) {
-							sol.addBinary(~Lit(prop[x][t][s]),~Lit(prop[x2][t+dt][s]));
-						}
+				for (int dt = 1; dt < d.getD()[x]; ++dt) {
+					for (int x2 = 0; x2 < d.getX(); ++x2) {
+						sol.addBinary(~Lit(prop[x][t][s]),~Lit(prop[x2][t+dt][s]));
 					}
 				}
 			}
@@ -80,7 +78,7 @@ void ScheduleSolver::solve() {
 	}
 
 	// Contrainte d'interdiction de sortie des bornes horraires
-	// -> un examen qui dure n périodes ne peut pas être placé dans [T-n+1 ,T-1] sans sortir de l'horraire
+	// -> un examen qui dure n périodes ne peut pas être placé dans [T-n+1 ,T[ sans sortir de l'horraire
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int s = 0; s < d.getS(); ++s) {
 			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
