@@ -7,7 +7,7 @@
 #include <cmath>
 #include <vector>
 
-ScheduleSolver::ScheduleSolver() : parser() { 
+ScheduleSolver::ScheduleSolver(std::string fileName) : parser(fileName) { 
 
 }
 

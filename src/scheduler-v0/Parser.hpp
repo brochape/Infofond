@@ -8,13 +8,14 @@
 
 class Parser {
 public:
-	Parser();
+	Parser(std::string fileName);
 
 	Data parse();
 
 	~Parser();
+
 private:
-    std::string line;
+	std::ifstream file;
 };
 
 #endif // DATA_HPP

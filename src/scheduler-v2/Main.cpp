@@ -6,7 +6,8 @@
 using namespace std;
 
 int main() {
-	ScheduleSolver s;
+	std::string str = std::string("data/example-inputs3.txt");
+	ScheduleSolver s(str);
 	s.solve();
 	s.solve();
 	return 0;

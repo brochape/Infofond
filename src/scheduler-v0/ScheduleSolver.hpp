@@ -7,7 +7,7 @@
 
 class ScheduleSolver {
 public:
-	ScheduleSolver();
+	ScheduleSolver(std::string fileName);
 
 	void solve();
 	std::vector<int> countStudents(int X, std::vector<std::vector<int>> a);
