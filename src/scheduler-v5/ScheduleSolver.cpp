@@ -172,6 +172,16 @@ void ScheduleSolver::solve() {
 		}
 	}
 
+	for (int i = 0; i < d.getN(); ++i) {
+		vec<Lit> lits;
+		int x(d.getF()[i][0]-1);
+		int s(d.getF()[i][1]-1);
+		for (int t = 0; t < d.getT(); ++t) {
+			lits.push(Lit(prop[x][t][s]));
+		}
+		sol.addClause(lits);
+	}
+	
 	sol.solve();
 
 	// print de l'output

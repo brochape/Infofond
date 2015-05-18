@@ -86,8 +86,23 @@ Data Parser::parse(){
 				}
 				i.push_back(p);
 			}
-			
-			return Data(T,S,c,E,P,X,a,b,d,I,i);
+			// N = nombre de salle ou on veut absolument un examen
+			getline(iss,token,';');
+			int N(atoi(token.c_str()));
+			// f = liste des salles à forcer
+			std::vector<std::vector<int> > f;
+			for (int k = 0; k < I; ++k) {
+				getline(iss,token,';');
+				std::istringstream iss2(token);
+				std::string tk;
+				std::vector<int> p;
+				while (getline(iss2,tk,',')) {
+					p.push_back(atoi(tk.c_str()));
+				}
+				f.push_back(p);
+			}
+
+			return Data(T,S,c,E,P,X,a,b,d,I,i,N,f);
 		} else {
 			std::cout << "La lecture du fichier est terminée." << std::endl;			
 		}
