@@ -73,6 +73,29 @@ add_executable(projet-v2
         minisat/VarOrder.hpp
 )
 
+add_executable(projet-v3
+        scheduler-v3/Data.hpp
+        scheduler-v3/Data.cpp
+
+        minisat/Global.hpp
+        minisat/Heap.hpp
+
+        scheduler-v3/Main.cpp
+
+        scheduler-v3/Parser.hpp
+        scheduler-v3/Parser.cpp
+
+        scheduler-v3/ScheduleSolver.hpp
+        scheduler-v3/ScheduleSolver.cpp
+
+        minisat/Solver.cpp
+        minisat/Solver.hpp
+
+        minisat/SolverTypes.hpp
+        minisat/Sort.hpp
+        minisat/VarOrder.hpp
+)
+
 add_executable(projet-v9
         scheduler-v9/Data.hpp
         scheduler-v9/Data.cpp
