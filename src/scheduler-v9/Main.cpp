@@ -8,5 +8,4 @@ using namespace std;
 int main() {
 	ScheduleSolver s;
 	s.solve();
-	return 0;
 }

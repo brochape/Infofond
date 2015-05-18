@@ -156,7 +156,14 @@ void ScheduleSolver::solve() {
 		int d2(d.getI()[i][1]);
 		for (int x = 0; x < d.getX(); ++x) {
 			for (int s = 0; s < d.getS(); ++s) {
-				for (int t = d1-d.getD()[x]+1; t < d2+1; ++t) {
+				for (int t = d1; t < d2+1; ++t) {
+					sol.addUnit(~Lit(prop[x][t][s]));
+				}
+			}
+		}
+		for (int x = 0; x < d.getX(); ++x) {
+			for (int s = 0; s < d.getS(); ++s) {
+				for (int t = d1-d.getD()[x]+1; t < d1; ++t) {
 					if (t>=0) {
 						sol.addUnit(~Lit(prop[x][t][s]));
 					}
