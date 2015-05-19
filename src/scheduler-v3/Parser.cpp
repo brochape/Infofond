@@ -86,8 +86,11 @@ Data Parser::parse(){
 				}
 				i.push_back(p);
 			}
+			// K = nombre de changement de salle maximum
+			getline(iss,token,';');
+			int K(atoi(token.c_str()));
 			
-			return Data(T,S,c,E,P,X,a,b,d,I,i);
+			return Data(T,S,c,E,P,X,a,b,d,I,i,K);
 		} else {
 			std::cout << "La lecture du fichier est terminée." << std::endl;			
 		}

@@ -1,7 +1,7 @@
 #include "Data.hpp"
 #include <iostream>
 
-Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<std::vector<int>> a, std::vector<std::vector<int>> b, std::vector<int> d, int I, std::vector<std::vector<int> > i ) :
+Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<std::vector<int>> a, std::vector<std::vector<int>> b, std::vector<int> d, int I, std::vector<std::vector<int> > i, int K ) :
 		T(T),
 		S(S),
 		c(c),
@@ -13,7 +13,8 @@ Data::Data(int T, int S, std::vector<int> c, int E, int P, int X, std::vector<st
 		d(d),
 		v(countStudents(X,a)),
 		I(I),
-		i(i)
+		i(i),
+		K(K)
 {}
 
 void Data::print() {
@@ -53,7 +54,7 @@ void Data::print() {
 		std::cout << "(" << this->getI()[i][0] << "," << this->getI()[i][1] << "), ";
 	}
 	std::cout << std::endl;
-	 
+	std::cout << "Nombre de changement max : " << this->getK() << std::endl;
 }
 
 std::vector<int> Data::countStudents(int X, std::vector<std::vector<int>> a) {

@@ -6,9 +6,44 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <algorithm>
 
 ScheduleSolver::ScheduleSolver(std::string fileName) : parser(fileName) { 
 
+}
+
+bool ScheduleSolver::noRepeat(std::vector<int> *v) {
+	int i(0);
+	if (v->size()>1) {
+		while (i<v->size()-1) {
+			if ((*v)[i]==(*v)[i+1]) {
+				return false;
+			} else {
+				i+=1;
+			}
+		}
+	}
+	return true;
+}
+
+bool ScheduleSolver::next_combinaison(std::vector<int> *v, int max) {
+	int pos(v->size()-1);
+	
+	while (pos>=0) {
+		(*v)[pos] += 1;
+		if ((*v)[pos]<=max) {
+			if (noRepeat(v)) {
+				return true;
+			} else {
+				pos = v->size()-1;
+			}
+		} else {
+			(*v)[pos] = 1;
+			pos-=1;
+		}
+	}
+
+	return false;
 }
 
 void ScheduleSolver::solve() {
@@ -168,6 +203,37 @@ void ScheduleSolver::solve() {
 						sol.addUnit(~Lit(prop[x][t][s]));
 					}
 				}
+			}
+		}
+	}
+	for (int e = 0; e < d.getE(); ++e) {
+		if (d.getA()[e].size()>d.getK()+1) {
+			if (d.getT()>d.getK()+1) {
+				std::vector<int> tPerm;
+				for (int i = 0; i < d.getT(); ++i) {
+					tPerm.push_back(i);
+				}
+				do {
+
+					std::vector<int> sComb;
+					for (int i = 0; i < d.getA()[e].size(); ++i) {
+						sComb.push_back(1);
+					}
+					while ( next_combinaison(&sComb,d.getS()) ) {
+						vec<Lit> lits;
+						for (int p = 0; p < d.getT(); ++p) {
+							if (tPerm[p]<d.getA()[e].size()) {
+								int x(d.getA()[e][tPerm[p]]-1);
+								int t(p);
+								int s(sComb[tPerm[p]]-1);
+								lits.push(~Lit(prop[x][t][s]));
+							}
+						}
+						sol.addClause(lits);
+					}
+
+				} while ( std::next_permutation(tPerm.begin(),tPerm.end()) );
+			
 			}
 		}
 	}

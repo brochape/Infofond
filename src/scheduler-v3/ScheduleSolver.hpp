@@ -22,6 +22,9 @@ private:
 
 	Parser parser;
 	std::vector< std::vector< std::vector <int> > > prop;
+	bool next_combinaison(std::vector<int>*v, int max);
+	bool noRepeat(std::vector<int> *v);
+
 
 };
 
