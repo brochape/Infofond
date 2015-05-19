@@ -143,9 +143,23 @@ void ScheduleSolver::solve() {
 			}
 			std::cout << std::endl;
 		}
+
+		for (int x = 0; x < d.getX(); ++x) {
+			for (int t = 0; t < d.getT(); ++t) {
+				for (int s = 0; s < d.getS(); ++s) {
+					if (sol.model[prop[x][t][s]]==l_True) {
+						std::cout << s << "," << t << ";";
+					}
+				}
+			}
+		}
+		std::cout << std::endl;
+
+
 	}
 	else{
 		std::cout << "Ce problème n'a pas de solution."<<std::endl;
+		std::cout << 0 << std::endl;
 	}
 
 }
