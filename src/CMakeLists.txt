@@ -4,20 +4,20 @@ project(InfoFond)
 
 #Déclaration de l'exécutable
 
-add_executable(projet-v0
-        scheduler-v0/Data.hpp
-        scheduler-v0/Data.cpp
+add_executable(question4
+        question-4/Data.hpp
+        question-4/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v0/Main.cpp
+        question-4/Main.cpp
 
-        scheduler-v0/Parser.hpp
-        scheduler-v0/Parser.cpp
+        question-4/Parser.hpp
+        question-4/Parser.cpp
 
-        scheduler-v0/ScheduleSolver.hpp
-        scheduler-v0/ScheduleSolver.cpp
+        question-4/ScheduleSolver.hpp
+        question-4/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -27,20 +27,20 @@ add_executable(projet-v0
         minisat/VarOrder.hpp
 )
 
-add_executable(projet-v1
-        scheduler-v1/Data.hpp
-        scheduler-v1/Data.cpp
+add_executable(question5
+        question-5/Data.hpp
+        question-5/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v1/Main.cpp
+        question-5/Main.cpp
 
-        scheduler-v1/Parser.hpp
-        scheduler-v1/Parser.cpp
+        question-5/Parser.hpp
+        question-5/Parser.cpp
 
-        scheduler-v1/ScheduleSolver.hpp
-        scheduler-v1/ScheduleSolver.cpp
+        question-5/ScheduleSolver.hpp
+        question-5/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -50,20 +50,20 @@ add_executable(projet-v1
         minisat/VarOrder.hpp
 )
 
-add_executable(projet-v2
-        scheduler-v2/Data.hpp
-        scheduler-v2/Data.cpp
+add_executable(question6
+        question-6/Data.hpp
+        question-6/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v2/Main.cpp
+        question-6/Main.cpp
 
-        scheduler-v2/Parser.hpp
-        scheduler-v2/Parser.cpp
+        question-6/Parser.hpp
+        question-6/Parser.cpp
 
-        scheduler-v2/ScheduleSolver.hpp
-        scheduler-v2/ScheduleSolver.cpp
+        question-6/ScheduleSolver.hpp
+        question-6/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -73,20 +73,20 @@ add_executable(projet-v2
         minisat/VarOrder.hpp
 )
 
-add_executable(projet-v3
-        scheduler-v3/Data.hpp
-        scheduler-v3/Data.cpp
+add_executable(question7
+        question-7/Data.hpp
+        question-7/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v3/Main.cpp
+        question-7/Main.cpp
 
-        scheduler-v3/Parser.hpp
-        scheduler-v3/Parser.cpp
+        question-7/Parser.hpp
+        question-7/Parser.cpp
 
-        scheduler-v3/ScheduleSolver.hpp
-        scheduler-v3/ScheduleSolver.cpp
+        question-7/ScheduleSolver.hpp
+        question-7/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -96,20 +96,20 @@ add_executable(projet-v3
         minisat/VarOrder.hpp
 )
 
-add_executable(projet-v4
-        scheduler-v4/Data.hpp
-        scheduler-v4/Data.cpp
+add_executable(question10-1
+        question-10-1/Data.hpp
+        question-10-1/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v4/Main.cpp
+        question-10-1/Main.cpp
 
-        scheduler-v4/Parser.hpp
-        scheduler-v4/Parser.cpp
+        question-10-1/Parser.hpp
+        question-10-1/Parser.cpp
 
-        scheduler-v4/ScheduleSolver.hpp
-        scheduler-v4/ScheduleSolver.cpp
+        question-10-1/ScheduleSolver.hpp
+        question-10-1/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -119,20 +119,20 @@ add_executable(projet-v4
         minisat/VarOrder.hpp
 )
 
-add_executable(projet-v5
-        scheduler-v5/Data.hpp
-        scheduler-v5/Data.cpp
+add_executable(question9
+        question-9/Data.hpp
+        question-9/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v5/Main.cpp
+        question-9/Main.cpp
 
-        scheduler-v5/Parser.hpp
-        scheduler-v5/Parser.cpp
+        question-9/Parser.hpp
+        question-9/Parser.cpp
 
-        scheduler-v5/ScheduleSolver.hpp
-        scheduler-v5/ScheduleSolver.cpp
+        question-9/ScheduleSolver.hpp
+        question-9/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -142,20 +142,20 @@ add_executable(projet-v5
         minisat/VarOrder.hpp
 )
 
-add_executable(projet-v9
-        scheduler-v9/Data.hpp
-        scheduler-v9/Data.cpp
+add_executable(question10-2
+        question-10-2/Data.hpp
+        question-10-2/Data.cpp
 
         minisat/Global.hpp
         minisat/Heap.hpp
 
-        scheduler-v9/Main.cpp
+        question-10-2/Main.cpp
 
-        scheduler-v9/Parser.hpp
-        scheduler-v9/Parser.cpp
+        question-10-2/Parser.hpp
+        question-10-2/Parser.cpp
 
-        scheduler-v9/ScheduleSolver.hpp
-        scheduler-v9/ScheduleSolver.cpp
+        question-10-2/ScheduleSolver.hpp
+        question-10-2/ScheduleSolver.cpp
 
         minisat/Solver.cpp
         minisat/Solver.hpp
@@ -164,5 +164,6 @@ add_executable(projet-v9
         minisat/Sort.hpp
         minisat/VarOrder.hpp
 )
+
 
 set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")
