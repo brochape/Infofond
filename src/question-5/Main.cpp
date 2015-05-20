@@ -5,8 +5,8 @@
 
 using namespace std;
 
-int main() {
-	std::string str = std::string("data/example-inputs2.txt");
+int main(int argc, char** argv) {
+    std::string str = std::string(argv[1]);
 	ScheduleSolver s(str);
 	s.solve();
 	s.solve();
