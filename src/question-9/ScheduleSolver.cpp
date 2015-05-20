@@ -27,7 +27,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'unicité sur les examen, le temps et les salles
+	// C1, C2, C3.1 : Contrainte d'unicité sur les examen, le temps et les salles
 	// -> les examens ne se produisent pas deux fois (dans le temps et l'espace)
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int t = 0; t < d.getT(); ++t) {
@@ -51,7 +51,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'existence
+	// C3.2 : Contrainte d'existence
 	// -> Il faut que chaque examen soit planifié au moins une fois
 	for (int x = 0; x < d.getX(); ++x) {
 		vec<Lit> lits;
@@ -63,32 +63,7 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
-	// oblige les n heures qui suivent le début d'un examen de n heures d'être libre
-	for (int x1 = 0; x1 < d.getX(); ++x1) {
-		for (int t = 0; t < d.getT(); ++t) {
-			for (int s = 0; s < d.getS(); ++s) {
-				if (t+d.getD()[x1]-1<d.getT()) {
-					for (int dt = 1; dt < d.getD()[x1]; ++dt) {
-						for (int x2 = 0; x2 < d.getX(); ++x2) {
-							// std::cout << "not " << x1 << " " << t << " " << s << " or not " << x2 << " " << t+dt << " " << s << std::endl;
-							sol.addBinary(~Lit(prop[x1][t][s]),~Lit(prop[x2][t+dt][s]));
-						}
-					}
-				}
-			}
-		}
-	}
-
-	// ne peut pas commencer si l'examen sort de l'horraire
-	for (int x = 0; x < d.getX(); ++x) {
-		for (int s = 0; s < d.getS(); ++s) {
-			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
-				sol.addUnit(~Lit(prop[x][t][s]));
-			}
-		}
-	}
-
-	// Contrainte de la limitation de place dans les salles
+	// C4 : Contrainte de la limitation de place dans les salles
 	// -> Un examen ou il y a x personnes ne peut pas avoir lieu dans une salle des n places si n<x
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int t = 0; t < d.getT(); ++t) {
@@ -100,7 +75,7 @@ void ScheduleSolver::solve() {
 		}
 	};
 
-	// Contrainte de la résolution des conflit horraire pour un étudiant
+	// C5.2 : Contrainte de la résolution des conflit horraire pour un étudiant
 	// -> Un étudiant ne peut pas avoir 2 examens en même temps
 	for (int e = 0; e < d.getE(); ++e) {
 		for (int x = 0; x < d.getA()[e].size(); ++x) {
@@ -123,7 +98,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte de la résolution des conflit horraire pour un professeur
+	// C6.2 : Contrainte de la résolution des conflit horraire pour un professeur
 	// -> Un professeur ne peut pas surveiller 2 examens en même temps
 	for (int p = 0; p < d.getP(); ++p) {
 		for (int x = 0; x < d.getB()[p].size(); ++x) {
@@ -145,22 +120,41 @@ void ScheduleSolver::solve() {
 		}
 	}
 
+	// C7.1 : Contrainte de continuité dans le temps d'un examen
+	// -> Un examen peut se dérouler sur plusieurs périodes
+	for (int x1 = 0; x1 < d.getX(); ++x1) {
+		for (int t = 0; t < d.getT(); ++t) {
+			for (int s = 0; s < d.getS(); ++s) {
+				if (t+d.getD()[x1]-1<d.getT()) {
+					for (int dt = 1; dt < d.getD()[x1]; ++dt) {
+						for (int x2 = 0; x2 < d.getX(); ++x2) {
+							sol.addBinary(~Lit(prop[x1][t][s]),~Lit(prop[x2][t+dt][s]));
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// C7.2 : Contrainte d'interdiction de sortie des bornes horraires
+	// -> un examen qui dure n périodes ne peut pas être placé dans [T-n+1 ,T-1] sans sortir de l'horraire
+	for (int x = 0; x < d.getX(); ++x) {
+		for (int s = 0; s < d.getS(); ++s) {
+			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
+				sol.addUnit(~Lit(prop[x][t][s]));
+			}
+		}
+	}
+
+	// C8 : Contrainte d'interdiction de placer un examen pendant un intervalle non disponible
+	// -> aucun examen ne peut commencer dans cet intervalle de temps, ni déborder dans cet intervalle de temps
 	for (int i = 0; i < d.getI().size(); ++i) {
 		int d1(d.getI()[i][0]);
 		int d2(d.getI()[i][1]);
 		for (int x = 0; x < d.getX(); ++x) {
 			for (int s = 0; s < d.getS(); ++s) {
-				for (int t = d1; t < d2+1; ++t) {
-					std::cout << x << " " << t << " " << s << std::endl;
-					sol.addUnit(~Lit(prop[x][t][s]));
-				}
-			}
-		}
-		for (int x = 0; x < d.getX(); ++x) {
-			for (int s = 0; s < d.getS(); ++s) {
-				for (int t = d1-d.getD()[x]+1; t < d1; ++t) {
+				for (int t = d1-d.getD()[x]+1; t < d2+1;; ++t) {
 					if (t>=0) {
-						std::cout << x << " " << t << " " << s << std::endl;
 						sol.addUnit(~Lit(prop[x][t][s]));
 					}
 				}
@@ -168,6 +162,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
+	// C10 : Contrainte d'interdiction de changement de salle sans pause entre chaque pair examens d'un étutudiant
 	for (int e = 0; e < d.getE(); ++e) {
 		for (int x = 0; x < d.getA()[e].size(); ++x) {
 			for (int y = 0; y < d.getA()[e].size(); ++y) {
@@ -177,7 +172,6 @@ void ScheduleSolver::solve() {
 							for (int s2 = 0; s2 < d.getS(); ++s2) {
 								int dt(d.getD()[d.getA()[e][x]-1]);
 								if ((s!=s2) && (t+dt<d.getT())) {
-									std::cout << "not " << d.getA()[e][x]-1 << " " << t << " " << s << " or not " << d.getA()[e][y]-1 << " " << t+dt << " " << s2 << std::endl;
 									sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][t+dt][s2]));
 								}
 							}

@@ -27,7 +27,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'unicité sur les examens, le temps et les salles
+	// C1,C2,C3.1 : Contrainte d'unicité sur les examens, le temps et les salles
 	// -> les examens ne se produisent pas deux fois (dans le temps et l'espace)
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int t = 0; t < d.getT(); ++t) {
@@ -51,7 +51,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'existence
+	// C3.2 : Contrainte d'existence
 	// -> Il faut que chaque examen soit planifié au moins une fois
 	for (int x = 0; x < d.getX(); ++x) {
 		vec<Lit> lits;
@@ -63,7 +63,7 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
-	// Contrainte de la taille limitée des salles
+	// C4 : Contrainte de la taille limitée des salles
 	// -> Un examen, que x personnes doit passer, ne peut pas avoir lieu dans une salle avec n places si n<x
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int t = 0; t < d.getT(); ++t) {
@@ -75,7 +75,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'interdiction des conflits horraires pour un étudiant
+	// C5 : Contrainte d'interdiction des conflits horraires pour un étudiant
 	// -> Un étudiant ne peut pas passer 2 examens en même temps
 	for (int e = 0; e < d.getE(); ++e) {
 		for (int i = 0; i < d.getA()[e].size(); ++i) {
@@ -95,7 +95,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'interdiction des conflits horraires pour un professeur
+	// C6 : Contrainte d'interdiction des conflits horraires pour un professeur
 	// -> Un professeur ne peut pas surveiller 2 examens en même temps
 	for (int p = 0; p < d.getP(); ++p) {
 		for (int i = 0; i < d.getB()[p].size(); ++i) {

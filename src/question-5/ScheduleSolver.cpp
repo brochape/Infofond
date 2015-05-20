@@ -27,7 +27,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'unicité sur les examen, le temps et les salles
+	// C1, C2, C3.1 : Contrainte d'unicité sur les examen, le temps et les salles
 	// -> les examens ne se produisent pas deux fois (dans le temps et l'espace)
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int t = 0; t < d.getT(); ++t) {
@@ -51,7 +51,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'existence
+	// C3.2 : Contrainte d'existence
 	// -> Il faut que chaque examen soit planifié au moins une fois
 	for (int x = 0; x < d.getX(); ++x) {
 		vec<Lit> lits;
@@ -63,33 +63,7 @@ void ScheduleSolver::solve() {
 		sol.addClause(lits);
 	}
 
-	// Contrainte de continuité dans le temps d'un examen
-	// -> Un examen peut se dérouler sur plusieurs périodes
-	for (int x = 0; x < d.getX(); ++x) {
-		for (int t = 0; t < d.getT(); ++t) {
-			for (int s = 0; s < d.getS(); ++s) {
-				if (t+d.getD()[x]-1<d.getT()) {
-					for (int dt = 1; dt < d.getD()[x]; ++dt) {
-						for (int x2 = 0; x2 < d.getX(); ++x2) {
-							sol.addBinary(~Lit(prop[x][t][s]),~Lit(prop[x2][t+dt][s]));
-						}
-					}
-				}
-			}
-		}
-	}
-
-	// Contrainte d'interdiction de sortie des bornes horraires
-	// -> un examen qui dure n périodes ne peut pas être placé dans [T-n+1 ,T-1] sans sortir de l'horraire
-	for (int x = 0; x < d.getX(); ++x) {
-		for (int s = 0; s < d.getS(); ++s) {
-			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
-				sol.addUnit(~Lit(prop[x][t][s]));
-			}
-		}
-	}
-
-	// Contrainte de la taille limitée des salles
+	// C4 : Contrainte de la taille limitée des salles
 	// -> Un examen, que x personnes doit passer, ne peut pas avoir lieu dans une salle avec n places si n<x
 	for (int x = 0; x < d.getX(); ++x) {
 		for (int t = 0; t < d.getT(); ++t) {
@@ -101,7 +75,7 @@ void ScheduleSolver::solve() {
 		}
 	};
 
-	// Contrainte d'interdiction des conflits horraires pour un étudiant
+	// C5.2 : Contrainte d'interdiction des conflits horraires pour un étudiant
 	// -> Un étudiant ne peut pas passer 2 examens en même temps
 	for (int e = 0; e < d.getE(); ++e) {
 		for (int i = 0; i < d.getA()[e].size(); ++i) {
@@ -125,7 +99,7 @@ void ScheduleSolver::solve() {
 		}
 	}
 
-	// Contrainte d'interdiction des conflits horraires pour un professeur
+	// C6.2 : Contrainte d'interdiction des conflits horraires pour un professeur
 	// -> Un professeur ne peut pas surveiller 2 examens en même temps
 	for (int p = 0; p < d.getP(); ++p) {
 		for (int i = 0; i < d.getB()[p].size(); ++i) {
@@ -145,6 +119,32 @@ void ScheduleSolver::solve() {
 						}
 					}
 				}
+			}
+		}
+	}
+
+	// C7.1 : Contrainte de continuité dans le temps d'un examen
+	// -> Un examen peut se dérouler sur plusieurs périodes
+	for (int x = 0; x < d.getX(); ++x) {
+		for (int t = 0; t < d.getT(); ++t) {
+			for (int s = 0; s < d.getS(); ++s) {
+				if (t+d.getD()[x]-1<d.getT()) {
+					for (int dt = 1; dt < d.getD()[x]; ++dt) {
+						for (int x2 = 0; x2 < d.getX(); ++x2) {
+							sol.addBinary(~Lit(prop[x][t][s]),~Lit(prop[x2][t+dt][s]));
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// C7.2 : Contrainte d'interdiction de sortie des bornes horraires
+	// -> un examen qui dure n périodes ne peut pas être placé dans [T-n+1 ,T-1] sans sortir de l'horraire
+	for (int x = 0; x < d.getX(); ++x) {
+		for (int s = 0; s < d.getS(); ++s) {
+			for (int t = d.getT()-d.getD()[x]+1; t < d.getT(); ++t) {
+				sol.addUnit(~Lit(prop[x][t][s]));
 			}
 		}
 	}
