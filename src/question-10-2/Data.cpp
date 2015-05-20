@@ -57,7 +57,7 @@ void Data::print() {
 	std::cout << std::endl;
 	std::cout << "Nombre de salle à forcer: " << this->getN() << std::endl;
 	for (int k = 0; k < this->getN(); ++k) {
-		std::cout << "(" << this->getF()[k][0] << "," << this->getF()[k][1] << "), ";
+		std::cout << "(" << this->getF()[k][0]-1 << "," << this->getF()[k][1]-1 << "), ";
 	}
 	std::cout << std::endl;
 }
