@@ -86,7 +86,6 @@ void ScheduleSolver::solve() {
 							for (int s2 = 0; s2 < d.getS(); ++s2) {
 								for (int dt = t-d.getD()[d.getA()[e][y]-1]+1; dt <= t+d.getD()[d.getA()[e][x]-1]-1; ++dt) {
 									if ((dt>=0) && (dt<d.getT())) {
-										// std::cout << "not " << d.getA()[e][x]-1 << " " << t << " " << s << " or not " << d.getA()[e][y]-1 << " " << dt << " " << s2 << std::endl;
 										sol.addBinary(~Lit(prop[d.getA()[e][x]-1][t][s]),~Lit(prop[d.getA()[e][y]-1][dt][s2]));
 									}
 								}
@@ -153,7 +152,7 @@ void ScheduleSolver::solve() {
 		int d2(d.getI()[i][1]);
 		for (int x = 0; x < d.getX(); ++x) {
 			for (int s = 0; s < d.getS(); ++s) {
-				for (int t = d1-d.getD()[x]+1; t < d2+1;; ++t) {
+				for (int t = d1-d.getD()[x]+1; t < d2+1; ++t) {
 					if (t>=0) {
 						sol.addUnit(~Lit(prop[x][t][s]));
 					}
