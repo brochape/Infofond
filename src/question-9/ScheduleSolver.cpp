@@ -194,6 +194,9 @@ void ScheduleSolver::solve() {
 				}
 			}
 		}
+		std::cout<<std::endl;
+		std::cout<<"-------------------FORMATED OUTPUT-------------------"<<std::endl;
+		std::cout<<std::endl;
 		for (int x = 0; x < d.getX(); ++x) {
 			for (int t = 0; t < d.getT(); ++t) {
 				for (int s = 0; s < d.getS(); ++s) {
