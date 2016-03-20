@@ -1,3 +1,3 @@
 # Infofond
-Assignement for the course of "Informatiqut Fondamentale"
+Assignement for the course of "Informatique Fondamentale"
 ULB 2014-2015
